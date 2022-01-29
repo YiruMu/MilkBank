@@ -1,5 +1,6 @@
 import NewForm from "../components/form/NewForm";
 import {useNavigate} from 'react-router-dom';
+import Hyperform from "../components/Hyperform/Hyperform.js"
 function Entry(){
     const history = useNavigate();
    function addFormHandler(formData) {
@@ -21,6 +22,7 @@ function Entry(){
 
     return (<section>
             <h1>Add New Form</h1>
+            <Hyperform  />
             <NewForm onAddForm={addFormHandler}/>
         </section>
     );
