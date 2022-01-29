@@ -1,7 +1,8 @@
 import NewForm from "../components/form/NewForm";
-// import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import './Entry.css';
+import {useNavigate} from 'react-router-dom';
+import Hyperform from "../components/Hyperform/Hyperform.js"
 
 function Entry(){
     
@@ -24,7 +25,9 @@ function Entry(){
 
 
     return (<section>
+            <Hyperform  />
             <h1>Add New Form</h1>
+
             {forms.map( (form) => (
             <div>
                 <NewForm parentCallback={handleCallback} 
@@ -37,13 +40,10 @@ function Entry(){
             ))}
             
             
-
                 <div>
                         <button  onClick ={addForm}>Add Entry</button>
                 </div>
-
             
-
         </section>
     );
 }
