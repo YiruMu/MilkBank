@@ -1,27 +1,49 @@
 import NewForm from "../components/form/NewForm";
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
+import './Entry.css';
+
 function Entry(){
-    const history = useNavigate();
-   function addFormHandler(formData) {
-        fetch('https://meetinngs-default-rtdb.firebaseio.com/meetup.json',
-            {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            }
-        ).then(() =>{
-            history('/');
+    
 
-        });
 
+    const [forms, setForms] = useState([{formId: 0}]);
+    const addForm = () => {
+        setForms( (prevForms) => [...prevForms, {formId: forms.length}])
+        console.log(forms.length)
+    }
+
+    const handleCallback = (form, index) =>{
+        let newForms = [...forms];
+
+        newForms[index] = form;
+
+
+        setForms(newForms);
     }
 
 
     return (<section>
             <h1>Add New Form</h1>
-            <NewForm onAddForm={addFormHandler}/>
+            {forms.map( (form) => (
+            <div>
+                <NewForm parentCallback={handleCallback} 
+                formId={form.formId}
+                firstName={form.firstName}
+                lastName={form.lastName}
+                bday={form.bday}
+                password={form.password} />
+            </div>
+            ))}
+            
+            
+
+                <div>
+                        <button  onClick ={addForm}>Add Entry</button>
+                </div>
+
+            
+
         </section>
     );
 }
