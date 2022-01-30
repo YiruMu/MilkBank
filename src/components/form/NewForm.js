@@ -20,13 +20,17 @@ export default function NewForm(props){
             [name]: value
         }));
 
-        props.parentCallback(formData, formData.formId);
+        props.parentCallbackUpdate(formData, formData.formId);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         alert(JSON.stringify(formData, '', 2));
       };
+
+    const deleteThis = (event) => {
+        props.parentCallbackDelete(formData.formId);
+    }
 
     
     return( <Card>
@@ -47,7 +51,7 @@ export default function NewForm(props){
                     <input
                     value={formData.fat}
                     name="fat"
-                    type="text"
+                    type="number"
                     placeholder="Fat%" 
                     onChange={handleChange}
                     />
@@ -58,7 +62,7 @@ export default function NewForm(props){
                     <input
                     value={formData.protein}
                     name="protein"
-                    type="text"
+                    type="number"
                     placeholder="Protein%" 
                     onChange={handleChange}
                     />
@@ -69,7 +73,7 @@ export default function NewForm(props){
                     <input
                     value={formData.lactose}
                     name="lactose"
-                    type="text"
+                    type="number"
                     placeholder="Lactose%" 
                     onChange={handleChange}
                     />
@@ -80,7 +84,7 @@ export default function NewForm(props){
                     <input
                     value={formData.kcal}
                     name="kcal"
-                    type="text"
+                    type="number"
                     placeholder="Kcal" 
                     onChange={handleChange}
                     />
@@ -91,17 +95,17 @@ export default function NewForm(props){
                     <input
                     value={formData.volume}
                     name="volume"
-                    type="text"
+                    type="number"
                     placeholder="Volume mL" 
                     onChange={handleChange}
                     />
                 </div>
 
 
-               { /*<div className ={classes.actions}>
-                    <button>Add Entry</button>
+                <div className={classes.actions}>
+                    <button type='button' onClick={deleteThis}>Remove</button>
                 </div>
-                */}
+
             </form>
         </Card>
     );
