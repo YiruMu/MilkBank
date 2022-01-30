@@ -1,6 +1,6 @@
 import Card from '../UI/Card';
 import classes from './NewForm.module.css';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 export default function NewForm(props){
 
     const [formData, setFormData] = useState( {
@@ -13,6 +13,13 @@ export default function NewForm(props){
         volume: props.volume || '',
     });
 
+    useEffect( () => {
+        // console.log(formData);
+
+        props.parentCallbackUpdate(formData, formData.formId);
+        
+    },[formData])
+
     const handleChange = ({ target }) => {
         const {name, value} = target;
         setFormData((prev)=>({
@@ -20,7 +27,6 @@ export default function NewForm(props){
             [name]: value
         }));
 
-        props.parentCallbackUpdate(formData, formData.formId);
     };
 
     const handleSubmit = (event) => {

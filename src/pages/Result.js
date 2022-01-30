@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
 function Result(){
+
     const [name, setName] = useState("")
 
     const handleChange = e => {
@@ -38,7 +39,6 @@ function Result(){
             </form>
         </div>
     </div>;
-
 }
 
 export default Result;
