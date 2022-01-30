@@ -8,7 +8,7 @@ const Hyperform = () => {
   
     return (
       <div className="Hyperform">
-        <h2> Specify Desired Calories and # of Batches </h2>
+        <h2> Specify Desired Calories and # of Donations </h2>
         <form>
         <div className={classes.blah}>
           <label>Desired Calorie Amount:   </label>
@@ -21,7 +21,7 @@ const Hyperform = () => {
           <br />
           </div>
           <div className={classes.blah}>
-          <label>Desired # of Batches:   </label>
+          <label>Desired # of Donations:   </label>
           <input 
             type="number" 
             required 

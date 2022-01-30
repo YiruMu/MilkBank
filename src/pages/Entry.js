@@ -5,8 +5,10 @@ import {useNavigate} from 'react-router-dom';
 import Hyperform from "../components/Hyperform/Hyperform.js"
 import Results from "../components/results/Results.js"
 
+import { Link } from 'react-router-dom'
+
+
 function Entry(){
-    
 
     let showResults = false;
 
@@ -18,10 +20,7 @@ function Entry(){
 
     const handleCallbackUpdate = (form, index) =>{
         let newForms = [...forms];
-
         newForms[index] = form;
-
-
         setForms(newForms);
     }
     const handleCallbackDelete = (index) => {
@@ -35,8 +34,6 @@ function Entry(){
 
         setForms(newForms);
     }
-
-
 
     if (showResults) {
         return (
@@ -63,8 +60,15 @@ function Entry(){
                 <p>{}</p>
             </div>
             ))}
+
+            <div>
+                <button  onClick ={addForm}>Add Entry</button>
+                <Link to='/result'>Submit</Link>
+            </div>
+
+
             
-            
+     
                 <div>
                         <button  onClick ={addForm}>Add Entry</button>
                 </div>
@@ -72,6 +76,7 @@ function Entry(){
 
             <Results data={forms} />
             
+
         </section>
 
     );
