@@ -3,35 +3,29 @@ import {useRef} from 'react';
 import { useState } from "react";
 
 const Hyperform = () => {
-    const [calorieReq, setCalorieReq] = useState(0);
-    const [numBatches, setNumBatchesReq] = useState(0);
-  
+    const [calorieReq, setCalorieReq] = useState(20);
+    const handleSelect = (e) => {
+        console.log(e.target.value);
+        setCalorieReq(e.target.value);
+    }
+    // onChange={(e)=> setNumBatchesReq(e.target.value)} 
+    //onChange={(e)=> setCalorieReq(e.target.value)} 
     return (
+        <form>
       <div className="Hyperform">
         <h2> Specify Desired Calories and # of Donations </h2>
-        <form>
         <div className={classes.blah}>
-          <label>Desired Calorie Amount:   </label>
-          <input 
-            type="number" 
-            required 
-            value={calorieReq}
-            onChange={(e) => setCalorieReq(e.target.value)}
-          />
-          <br />
+          <label>Desired Calorie Amount: &nbsp;
+          <select>
+              <option selected value ="20">20</option>
+              <option value = "22">22</option>
+              <option value = "24">24</option>
+              onChange={handleSelect}
+          </select>
+          </label>
           </div>
-          <div className={classes.blah}>
-          <label>Desired # of Donations:   </label>
-          <input 
-            type="number" 
-            required 
-            value={numBatches}
-            onChange={(e) => setNumBatchesReq(e.target.value)}
-          />
-          </div>
-        </form>
-        <br />
       </div>
+      </form>
     );
   }
    
