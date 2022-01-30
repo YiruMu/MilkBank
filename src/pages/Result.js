@@ -1,44 +1,14 @@
-import React, { useState } from "react"
 
-function Result(){
 
-    const [name, setName] = useState("")
 
-    const handleChange = e => {
-        setName(e.target.value)
-    }
+export default function Result() {
 
-    const myObj = {
-        ID: '67191',
-        calCount: '24',
-        protein: '1.2'
-    }
 
-    function save() {
 
-        let output;
-        output = JSON.stringify(myObj, null, 4);
-        const blob = new Blob([output]);
-        const url = URL.createObjectURL(blob);
 
-        const a = document.createElement('a');
-        a.download = name;
-        a.href = url;
-        a.click();
-    }
-
-    return <div>
-        Result
-
+    return (
         <div>
-            <form>
-                <label>
-                    File Name: <input type="text" value = {name} onChange = {handleChange}/>
-                </label>
-                <button onClick={save}>Save File</button>
-            </form>
+            <h1>Results saved. Thank you for using Mother's Milk Bank Combination Optimizer. To start a new entry, click entry in the bar above.</h1>
         </div>
-    </div>;
-}
-
-export default Result;
+    )
+};

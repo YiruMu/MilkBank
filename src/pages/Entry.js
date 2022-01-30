@@ -4,6 +4,7 @@ import './Entry.css';
 import {useNavigate} from 'react-router-dom';
 import Hyperform from "../components/Hyperform/Hyperform.js"
 import Results from "../components/results/Results.js"
+import Result from "../pages/Result.js"
 
 import { Link } from 'react-router-dom'
 
@@ -61,13 +62,7 @@ function Entry(){
             </div>
             ))}
 
-            <div>
-                <button  onClick ={addForm}>Add Entry</button>
-                <Link to='/result'>Submit</Link>
-            </div>
-
-
-            
+                  
      
                 <div>
                         <button  onClick ={addForm}>Add Entry</button>

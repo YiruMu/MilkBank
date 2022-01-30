@@ -1,10 +1,13 @@
-
+import Save from "./Save.js"
+import {useState} from 'react'
 
 
 export default function Results(props) {
 
     const data = props.data;
 
+    const [matches, setMatches] = useState(); 
+    const [showPrint, setShowPrint] = useState(false);
 
     
 
@@ -69,13 +72,24 @@ export default function Results(props) {
 
         console.log(`Matches: ${matchList}`);
         console.log(matchList);
+        setShowPrint(true);
+        setMatches(matchList);
         return matchList;
     };
 
+    if (showPrint) {
+        return (
 
-    return (
+        <Save data={matches} />
+        )
+    }
+     else return (
         <div>
             <button type='button' onClick={() => solvePairs(data, 20)}>Generate Results</button>
+
+            
         </div>
     )
+
+
 }
