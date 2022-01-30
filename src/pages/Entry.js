@@ -3,9 +3,9 @@ import {useState} from 'react';
 import './Entry.css';
 import {useNavigate} from 'react-router-dom';
 import Hyperform from "../components/Hyperform/Hyperform.js"
+import { Link } from 'react-router-dom'
 
 function Entry(){
-    
 
 
     const [forms, setForms] = useState([{formId: 0}]);
@@ -16,10 +16,7 @@ function Entry(){
 
     const handleCallbackUpdate = (form, index) =>{
         let newForms = [...forms];
-
         newForms[index] = form;
-
-
         setForms(newForms);
     }
     const handleCallbackDelete = (index) => {
@@ -33,7 +30,6 @@ function Entry(){
 
         setForms(newForms);
     }
-
 
     return (<section>
             <Hyperform  />
@@ -52,13 +48,21 @@ function Entry(){
                 password={form.password} />
             </div>
             ))}
+
+            <div>
+                <button  onClick ={addForm}>Add Entry</button>
+                <Link to='/result'>Submit</Link>
+            </div>
+
+
             
-            
+     
                 <div>
                         <button  onClick ={addForm}>Add Entry</button>
                 </div>
                 <button type='button' onClick={(e) => {alert(JSON.stringify(forms, '', 2))}}>Debug</button>
             
+
         </section>
     );
 }

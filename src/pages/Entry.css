@@ -27,6 +27,7 @@
     text-align: right;
 }
 
+
 button {
     font: inherit;
     cursor: pointer;
@@ -36,6 +37,7 @@ button {
     border: 1px solid #77002e;
     border-radius: 4px;
     font-weight: bold;
+
 }
 
 button:hover,
@@ -43,3 +45,4 @@ button:active {
     background-color: #a50e48;
     border-color: #a50e48;
 }
+
