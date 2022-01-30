@@ -14,9 +14,20 @@ function Entry(){
         console.log(forms.length)
     }
 
-    const handleCallback = (form, index) =>{
+    const handleCallbackUpdate = (form, index) =>{
         let newForms = [...forms];
         newForms[index] = form;
+        setForms(newForms);
+    }
+    const handleCallbackDelete = (index) => {
+        let newForms = [...forms];
+
+        newForms.pop(index);
+
+        newForms.forEach( (form, i) => {
+            form.formId = i
+        });
+
         setForms(newForms);
     }
 
@@ -26,7 +37,10 @@ function Entry(){
 
             {forms.map( (form) => (
             <div>
-                <NewForm parentCallback={handleCallback} 
+                <p>{form.formId}</p>
+                <NewForm 
+                parentCallbackUpdate={handleCallbackUpdate} 
+                parentCallbackDelete={handleCallbackDelete}
                 formId={form.formId}
                 firstName={form.firstName}
                 lastName={form.lastName}
@@ -40,6 +54,14 @@ function Entry(){
                 <Link to='/result'>Submit</Link>
             </div>
 
+
+            
+     
+                <div>
+                        <button  onClick ={addForm}>Add Entry</button>
+                </div>
+                <button type='button' onClick={(e) => {alert(JSON.stringify(forms, '', 2))}}>Debug</button>
+            
 
         </section>
     );
